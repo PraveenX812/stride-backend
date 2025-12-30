@@ -7,7 +7,12 @@ const { handleChat } = require('./services/chatService');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Middleware
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+}));
 app.use(bodyParser.json());
 
 app.get('/api/emissions', (req, res) => {
