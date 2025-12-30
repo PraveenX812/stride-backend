@@ -15,6 +15,13 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+    if (req.url.includes('//')) {
+        req.url = req.url.replace(/\/{2,}/g, '/');
+    }
+    next();
+});
+
 app.get('/api/emissions', (req, res) => {
     res.json([]);
 });
