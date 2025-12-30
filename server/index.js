@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/api/emissions', (req, res) => {
-    res.json([]); // Return empty array as data is now AI-generated
+    res.json([]);
 });
 
 app.post('/api/chat', async (req, res) => {
