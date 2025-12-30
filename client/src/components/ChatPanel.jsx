@@ -30,14 +30,12 @@ const ChatPanel = ({ onDataUpdate }) => {
         setLoading(true);
 
         try {
-            // Use environment variable for production, fallback to localhost for dev
             const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
             const res = await axios.post(`${API_BASE}/api/chat`, { message: userMsg });
 
             let botText = res.data.answer;
             let source = res.data.source;
 
-            // Attempt to parse JSON for Data Visualization
             let jsonString = null;
 
             const codeBlockRegex = /```json\s*([\s\S]*?)\s*```/;
